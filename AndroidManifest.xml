@@ -6,22 +6,28 @@
 
     <uses-sdk
         android:minSdkVersion="10"
+        android:maxSdkVersion="17" 
         android:targetSdkVersion="10" />
+    
+    <uses-feature android:name="android.software.live_wallpaper" />
 
     <application
-        android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <activity
-            android:name="comix.bgteams.app.MainActivity"
-            android:label="@string/app_name" >
+        android:label="@string/app_name" android:allowBackup="true">
+        <service
+            android:name=".BgTeamsWallpaperService"
+            android:label="Bulgarian Teams Live Wallpaper"
+            android:permission="android.permission.BIND_WALLPAPER" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.service.wallpaper.WallpaperService" />
             </intent-filter>
-        </activity>
+
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/wall" />
+        </service>
     </application>
+
+    
 
 </manifest>
