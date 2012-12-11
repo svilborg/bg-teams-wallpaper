@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">BG Teams Wallpaper</string>
     <string name="menu_settings">Settings</string>
     <string name="wallpaper_description">Bulgarian Teams Wallpaper</string>
 
     <!-- Settings -->
     <string name="wallpaper_settings">Settings</string>
+
+    <!-- Teams -->
+
+    <string name="team_0">Случаен</string>
+    <string name="team_1">Beroe.png</string>
+    <string name="team_2">Botev_Plovdiv.png</string>
+    <string name="team_3">Botev_Vratsa.png</string>
+    <string name="team_4">Cherno_More.png</string>
+    <string name="team_5">Chernomorets.png</string>
+    <string name="team_6">CSKA_Sofia.png</string>
+    <string name="team_7">Etar.png</string>
+    <string name="team_8">Levski_Sofia.JPG</string>
+    <string name="team_9">Litex.png</string>
+    <string name="team_10">Loko_Plovdiv.png</string>
+    <string name="team_11">Loko_Sofia.png</string>
+    <string name="team_12">Ludogorets.png</string>
+    <string name="team_13">MinyorPernik.png</string>
+    <string name="team_14">Montana.png</string>
+    <string name="team_15">Pirin_Gotse_delchev.png</string>
+    <string name="team_16">Slavia.png</string>
+
 </resources>
