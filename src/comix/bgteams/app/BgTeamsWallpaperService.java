@@ -50,6 +50,8 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	private static final float DEMO_VELOCITY = 30.0f;
 
+	private static int TYPE = 2;
+
 	// ===========================================================
 	// Fields
 	// ===========================================================
@@ -112,7 +114,15 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	@Override
 	public void onLoadResources() {
-		initResourcesStatic();
+
+		if (TYPE == 1) {
+			initResourcesStatic();
+		} else if (TYPE == 2) {
+			initResourcesMoving();
+		}
+		else {
+			initResourcesStatic();
+		}
 	}
 
 	public void initResourcesStatic() {
@@ -122,7 +132,7 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 		this.mEngine.getTextureManager().loadTexture(this.mTexture);
 	}
 
-	public void initResourcesMovingBall() {
+	public void initResourcesMoving() {
 		this.mTexture = new Texture(256, 256, TextureOptions.DEFAULT);
 		this.mFaceTextureRegion = TextureRegionFactory.createTiledFromAsset(this.mTexture, this, "gfx/bfs.png", 0, 0, 1, 1);
 
@@ -191,33 +201,34 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 		/* Create the face and add it to the scene. */
 		return new Sprite(centerX, centerY, this.mTextureRegion);
-		
 	}
 
-	public Ball loadSpriteMovingBall() {
+	public Ball loadSpriteMoving() {
 		final int centerX = (CAMERA_WIDTH - this.mFaceTextureRegion.getWidth()) / 2;
 		final int centerY = (CAMERA_HEIGHT - this.mFaceTextureRegion.getHeight()) / 2;
-		
+
 		final Ball ball = new Ball(centerX, centerY, this.mFaceTextureRegion);
-		
+
 		return ball;
 	}
 
-//	public Scene onLoadScene2() {
-//		this.mEngine.registerUpdateHandler(new FPSLogger());
-//
-//		final Scene scene = new Scene();
-//		scene.setBackground(new ColorBackground(0.09804f, 0.6274f, 0.8784f));
-//
-//		final int centerX = (CAMERA_WIDTH - this.mFaceTextureRegion.getWidth()) / 2;
-//		final int centerY = (CAMERA_HEIGHT - this.mFaceTextureRegion.getHeight()) / 2;
-//		
-//		final Ball ball = new Ball(centerX, centerY, this.mFaceTextureRegion);
-//
-//		scene.attachChild(ball);
-//
-//		return scene;
-//	}
+	// public Scene onLoadScene2() {
+	// this.mEngine.registerUpdateHandler(new FPSLogger());
+	//
+	// final Scene scene = new Scene();
+	// scene.setBackground(new ColorBackground(0.09804f, 0.6274f, 0.8784f));
+	//
+	// final int centerX = (CAMERA_WIDTH - this.mFaceTextureRegion.getWidth()) /
+	// 2;
+	// final int centerY = (CAMERA_HEIGHT - this.mFaceTextureRegion.getHeight())
+	// / 2;
+	//
+	// final Ball ball = new Ball(centerX, centerY, this.mFaceTextureRegion);
+	//
+	// scene.attachChild(ball);
+	//
+	// return scene;
+	// }
 
 	@Override
 	public Scene onLoadScene() {
@@ -226,8 +237,14 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 		final Scene scene = new Scene();
 		scene.setBackground(new ColorBackground(0.09804f, 0.6274f, 0.8784f));
 
-
-		scene.attachChild(loadSpriteStatic());
+		
+		
+		if (TYPE == 2) {
+			scene.attachChild(loadSpriteMoving());
+		}
+		else {
+			scene.attachChild(loadSpriteStatic());
+		}
 
 		return scene;
 	}
