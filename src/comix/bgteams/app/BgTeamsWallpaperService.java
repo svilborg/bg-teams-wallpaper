@@ -119,8 +119,7 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 			initResourcesStatic();
 		} else if (TYPE == 2) {
 			initResourcesMoving();
-		}
-		else {
+		} else {
 			initResourcesStatic();
 		}
 	}
@@ -140,56 +139,58 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	}
 
 	// @Override
-	// public Scene onLoadScene() {
-	// this.mEngine.registerUpdateHandler(new FPSLogger());
-	//
-	// final Scene scene = new Scene();
-	// scene.setBackground(new ColorBackground(0.09804f, 0.6274f, 0.8784f));
-	//
-	// /*
-	// * Calculate the coordinates for the face, so its centered on the
-	// * camera.
-	// */
-	// final int centerX = (CAMERA_WIDTH - this.mTextureRegion.getWidth()) / 2;
-	// final int centerY = (CAMERA_HEIGHT - this.mTextureRegion.getHeight()) /
-	// 2;
-	//
-	// /* Create the face and add it to the scene. */
-	// final Sprite face = new Sprite(centerX, centerY, this.mTextureRegion) {
-	// // @Override
-	// // protected void applyRotation(final GL10 pGL) {
-	// // /* Disable culling so we can see the backside of this sprite. */
-	// // GLHelper.disableCulling(pGL);
-	// //
-	// // final float rotation = this.mRotation;
-	// //
-	// // if(rotation != 0) {
-	// // final float rotationCenterX = this.mRotationCenterX;
-	// // final float rotationCenterY = this.mRotationCenterY;
-	// //
-	// // pGL.glTranslatef(rotationCenterX, rotationCenterY, 0);
-	// // /* Note we are applying rotation around the y-axis and not the
-	// // z-axis anymore! */
-	// // pGL.glRotatef(rotation, 0, 1, 0);
-	// // pGL.glTranslatef(-rotationCenterX, -rotationCenterY, 0);
-	// // }
-	// // }
-	// //
-	// // @Override
-	// // protected void drawVertices(final GL10 pGL, final Camera pCamera)
-	// // {
-	// // super.drawVertices(pGL, pCamera);
-	// //
-	// // /* Enable culling as 'normal' entities profit from culling. */
-	// // GLHelper.enableCulling(pGL);
-	// // }
-	// };
-	// // face.registerEntityModifier(new LoopEntityModifier(new
-	// // RotationModifier(6, 0, 360)));
-	// scene.attachChild(face);
-	//
-	// return scene;
-	// }
+	public Sprite loadSpriteRotation () {
+//		this.mEngine.registerUpdateHandler(new FPSLogger());
+//
+//		final Scene scene = new Scene();
+//		scene.setBackground(new ColorBackground(0.09804f, 0.6274f, 0.8784f));
+
+		/*
+		 * Calculate the coordinates for the face, so its centered on the
+		 * camera.
+		 */
+		final int centerX = (CAMERA_WIDTH - this.mTextureRegion.getWidth()) / 2;
+		final int centerY = (CAMERA_HEIGHT - this.mTextureRegion.getHeight()) / 2;
+
+		/* Create the face and add it to the scene. */
+		final Sprite face = new Sprite(centerX, centerY, this.mTextureRegion) {
+			// @Override
+			// protected void applyRotation(final GL10 pGL) {
+			// /* Disable culling so we can see the backside of this sprite. */
+			// GLHelper.disableCulling(pGL);
+			//
+			// final float rotation = this.mRotation;
+			//
+			// if(rotation != 0) {
+			// final float rotationCenterX = this.mRotationCenterX;
+			// final float rotationCenterY = this.mRotationCenterY;
+			//
+			// pGL.glTranslatef(rotationCenterX, rotationCenterY, 0);
+			// /* Note we are applying rotation around the y-axis and not the
+			// z-axis anymore! */
+			// pGL.glRotatef(rotation, 0, 1, 0);
+			// pGL.glTranslatef(-rotationCenterX, -rotationCenterY, 0);
+			// }
+			// }
+			//
+			// @Override
+			// protected void drawVertices(final GL10 pGL, final Camera pCamera)
+			// {
+			// super.drawVertices(pGL, pCamera);
+			//
+			// /* Enable culling as 'normal' entities profit from culling. */
+			// GLHelper.enableCulling(pGL);
+			// }
+		};
+		// face.registerEntityModifier(new LoopEntityModifier(new
+		// RotationModifier(6, 0, 360)));
+		
+		//scene.attachChild(face);
+		
+		
+
+		return face;
+	}
 
 	public Sprite loadSpriteStatic() {
 		/*
@@ -212,24 +213,6 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 		return ball;
 	}
 
-	// public Scene onLoadScene2() {
-	// this.mEngine.registerUpdateHandler(new FPSLogger());
-	//
-	// final Scene scene = new Scene();
-	// scene.setBackground(new ColorBackground(0.09804f, 0.6274f, 0.8784f));
-	//
-	// final int centerX = (CAMERA_WIDTH - this.mFaceTextureRegion.getWidth()) /
-	// 2;
-	// final int centerY = (CAMERA_HEIGHT - this.mFaceTextureRegion.getHeight())
-	// / 2;
-	//
-	// final Ball ball = new Ball(centerX, centerY, this.mFaceTextureRegion);
-	//
-	// scene.attachChild(ball);
-	//
-	// return scene;
-	// }
-
 	@Override
 	public Scene onLoadScene() {
 		this.mEngine.registerUpdateHandler(new FPSLogger());
@@ -237,12 +220,9 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 		final Scene scene = new Scene();
 		scene.setBackground(new ColorBackground(0.09804f, 0.6274f, 0.8784f));
 
-		
-		
 		if (TYPE == 2) {
 			scene.attachChild(loadSpriteMoving());
-		}
-		else {
+		} else {
 			scene.attachChild(loadSpriteStatic());
 		}
 
