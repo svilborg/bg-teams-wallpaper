@@ -45,8 +45,8 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	// Camera Constants
 
-	private static final int CAMERA_WIDTH = 720;
-	private static final int CAMERA_HEIGHT = 480;
+	private static int CAMERA_WIDTH = 480;
+	private static int CAMERA_HEIGHT = 720;
 
 	private static final float DEMO_VELOCITY = 30.0f;
 
@@ -77,16 +77,15 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	@Override
 	public org.anddev.andengine.engine.Engine onLoadEngine() {
 		// get screen size
-		// WindowManager windowManager = (WindowManager)
-		// getSystemService(Context.WINDOW_SERVICE);
-		// Display display = windowManager.getDefaultDisplay();
-		// DisplayMetrics displayMetrics = new DisplayMetrics();
-		// display.getMetrics(displayMetrics);
-		// int height = displayMetrics.heightPixels;
-		// int width = displayMetrics.widthPixels;
-		//
-		// CAMERA_WIDTH = width;
-		// CAMERA_HEIGHT = height;
+		WindowManager windowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+		Display display = windowManager.getDefaultDisplay();
+		DisplayMetrics displayMetrics = new DisplayMetrics();
+		display.getMetrics(displayMetrics);
+		int height = displayMetrics.heightPixels;
+		int width = displayMetrics.widthPixels;
+
+		CAMERA_WIDTH = width;
+		CAMERA_HEIGHT = height;
 
 		// Camera mCamera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
 		// return new org.anddev.andengine.engine.Engine(new EngineOptions(true,
@@ -110,48 +109,20 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	public void onSharedPreferenceChanged(SharedPreferences pSharedPrefs, String pKey) {
 
 	}
-	
-
 
 	@Override
 	public void onLoadResources() {
-		// this.mTexture = new Texture(32, 32,
-		// TextureOptions.BILINEAR_PREMULTIPLYALPHA);
-		// this.mFaceTextureRegion =
-		// TextureRegionFactory.createTiledFromAsset(this.mTexture, this,
-		// "gfx/face_box.png", 0, 0, 0, 1);
+		initResourcesStatic();
+	}
 
-		// this.mFaceTextureRegion =
-		// TextureRegionFactory.createFromAsset(this.mTexture, this,
-		// "gfx/face_box.png");
-
-		// this.mTexture = new Texture(256, 256, TextureOptions.DEFAULT);
-		// this.mFaceTextureRegion =
-		// TextureRegionFactory.createTiledFromAsset(this.mTexture, this,
-		// "gfx/bfs.png", 0, 0, 1, 1);
-		//
-		// this.mEngine.getTextureManager().loadTexture(this.mTexture);
-
-		// this.mTexture = new Texture(256, 256,
-		// TextureOptions.BILINEAR_PREMULTIPLYALPHA);
-		// this.mTextureRegion =
-		// TextureRegionFactory.createFromAsset(this.mTexture, this,
-		// "gfx/bfs.png", 0, 0);
-		//
-		// this.mEngine.getTextureManager().loadTexture(this.mTexture);
-
-//		this.mTexture = new Texture(64, 32, TextureOptions.DEFAULT);
-//
-//		this.mTextureRegion = TextureRegionFactory.createFromAsset(this.mTexture, this, "gfx/face_box.png", 0, 0);
-//		this.mEngine.getTextureManager().loadTexture(this.mTexture);
-		
-		this.mTexture = new Texture(32, 32, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
-		this.mTextureRegion = TextureRegionFactory.createFromAsset(this.mTexture, this, "gfx/face_box.png", 0, 0);
+	public void initResourcesStatic() {
+		this.mTexture = new Texture(128, 128, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+		this.mTextureRegion = TextureRegionFactory.createFromAsset(this.mTexture, this, "gfx/bfs.png", 0, 0);
 
 		this.mEngine.getTextureManager().loadTexture(this.mTexture);
 	}
 
-	public void initMovingBall() {
+	public void initResourcesMovingBall() {
 		this.mTexture = new Texture(256, 256, TextureOptions.DEFAULT);
 		this.mFaceTextureRegion = TextureRegionFactory.createTiledFromAsset(this.mTexture, this, "gfx/bfs.png", 0, 0, 1, 1);
 
@@ -165,68 +136,88 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	// final Scene scene = new Scene();
 	// scene.setBackground(new ColorBackground(0.09804f, 0.6274f, 0.8784f));
 	//
-	// final int centerX = (CAMERA_WIDTH - this.mFaceTextureRegion.getWidth()) /
+	// /*
+	// * Calculate the coordinates for the face, so its centered on the
+	// * camera.
+	// */
+	// final int centerX = (CAMERA_WIDTH - this.mTextureRegion.getWidth()) / 2;
+	// final int centerY = (CAMERA_HEIGHT - this.mTextureRegion.getHeight()) /
 	// 2;
-	// final int centerY = (CAMERA_HEIGHT - this.mFaceTextureRegion.getHeight())
-	// / 2;
-	// final Ball ball = new Ball(centerX, centerY, this.mFaceTextureRegion);
 	//
-	// scene.attachChild(ball);
+	// /* Create the face and add it to the scene. */
+	// final Sprite face = new Sprite(centerX, centerY, this.mTextureRegion) {
+	// // @Override
+	// // protected void applyRotation(final GL10 pGL) {
+	// // /* Disable culling so we can see the backside of this sprite. */
+	// // GLHelper.disableCulling(pGL);
+	// //
+	// // final float rotation = this.mRotation;
+	// //
+	// // if(rotation != 0) {
+	// // final float rotationCenterX = this.mRotationCenterX;
+	// // final float rotationCenterY = this.mRotationCenterY;
+	// //
+	// // pGL.glTranslatef(rotationCenterX, rotationCenterY, 0);
+	// // /* Note we are applying rotation around the y-axis and not the
+	// // z-axis anymore! */
+	// // pGL.glRotatef(rotation, 0, 1, 0);
+	// // pGL.glTranslatef(-rotationCenterX, -rotationCenterY, 0);
+	// // }
+	// // }
+	// //
+	// // @Override
+	// // protected void drawVertices(final GL10 pGL, final Camera pCamera)
+	// // {
+	// // super.drawVertices(pGL, pCamera);
+	// //
+	// // /* Enable culling as 'normal' entities profit from culling. */
+	// // GLHelper.enableCulling(pGL);
+	// // }
+	// };
+	// // face.registerEntityModifier(new LoopEntityModifier(new
+	// // RotationModifier(6, 0, 360)));
+	// scene.attachChild(face);
 	//
 	// return scene;
 	// }
 
-//	@Override
-//	public Scene onLoadScene() {
+	public Sprite loadSpriteStatic() {
+		/*
+		 * Calculate the coordinates for the face, so its centered on the
+		 * camera.
+		 */
+		final int centerX = (CAMERA_WIDTH - this.mTextureRegion.getWidth()) / 2;
+		final int centerY = (CAMERA_HEIGHT - this.mTextureRegion.getHeight()) / 2;
+
+		/* Create the face and add it to the scene. */
+		return new Sprite(centerX, centerY, this.mTextureRegion);
+		
+	}
+
+	public Ball loadSpriteMovingBall() {
+		final int centerX = (CAMERA_WIDTH - this.mFaceTextureRegion.getWidth()) / 2;
+		final int centerY = (CAMERA_HEIGHT - this.mFaceTextureRegion.getHeight()) / 2;
+		
+		final Ball ball = new Ball(centerX, centerY, this.mFaceTextureRegion);
+		
+		return ball;
+	}
+
+//	public Scene onLoadScene2() {
 //		this.mEngine.registerUpdateHandler(new FPSLogger());
 //
 //		final Scene scene = new Scene();
 //		scene.setBackground(new ColorBackground(0.09804f, 0.6274f, 0.8784f));
 //
-//		/*
-//		 * Calculate the coordinates for the face, so its centered on the
-//		 * camera.
-//		 */
-//		final int centerX = (CAMERA_WIDTH - this.mTextureRegion.getWidth()) / 2;
-//		final int centerY = (CAMERA_HEIGHT - this.mTextureRegion.getHeight()) / 2;
+//		final int centerX = (CAMERA_WIDTH - this.mFaceTextureRegion.getWidth()) / 2;
+//		final int centerY = (CAMERA_HEIGHT - this.mFaceTextureRegion.getHeight()) / 2;
+//		
+//		final Ball ball = new Ball(centerX, centerY, this.mFaceTextureRegion);
 //
-//		/* Create the face and add it to the scene. */
-//		final Sprite face = new Sprite(centerX, centerY, this.mTextureRegion) {
-//			// @Override
-//			// protected void applyRotation(final GL10 pGL) {
-//			// /* Disable culling so we can see the backside of this sprite. */
-//			// GLHelper.disableCulling(pGL);
-//			//
-//			// final float rotation = this.mRotation;
-//			//
-//			// if(rotation != 0) {
-//			// final float rotationCenterX = this.mRotationCenterX;
-//			// final float rotationCenterY = this.mRotationCenterY;
-//			//
-//			// pGL.glTranslatef(rotationCenterX, rotationCenterY, 0);
-//			// /* Note we are applying rotation around the y-axis and not the
-//			// z-axis anymore! */
-//			// pGL.glRotatef(rotation, 0, 1, 0);
-//			// pGL.glTranslatef(-rotationCenterX, -rotationCenterY, 0);
-//			// }
-//			// }
-//			//
-//			// @Override
-//			// protected void drawVertices(final GL10 pGL, final Camera pCamera)
-//			// {
-//			// super.drawVertices(pGL, pCamera);
-//			//
-//			// /* Enable culling as 'normal' entities profit from culling. */
-//			// GLHelper.enableCulling(pGL);
-//			// }
-//		};
-//		// face.registerEntityModifier(new LoopEntityModifier(new
-//		// RotationModifier(6, 0, 360)));
-//		scene.attachChild(face);
+//		scene.attachChild(ball);
 //
 //		return scene;
 //	}
-	
 
 	@Override
 	public Scene onLoadScene() {
@@ -235,13 +226,8 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 		final Scene scene = new Scene();
 		scene.setBackground(new ColorBackground(0.09804f, 0.6274f, 0.8784f));
 
-		/* Calculate the coordinates for the face, so its centered on the camera. */
-		final int centerX = (CAMERA_WIDTH - this.mTextureRegion.getWidth()) / 2;
-		final int centerY = (CAMERA_HEIGHT - this.mTextureRegion.getHeight()) / 2;
 
-		/* Create the face and add it to the scene. */
-		final Sprite face = new Sprite(centerX, centerY, this.mTextureRegion);
-		scene.attachChild(face);
+		scene.attachChild(loadSpriteStatic());
 
 		return scene;
 	}
