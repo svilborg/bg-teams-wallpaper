@@ -40,7 +40,7 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	public static final String SHARED_PREFS_NAME = "livewallpapertemplatesettings";
 
 	// Camera Constants
-	
+
 	private static int CAMERA_WIDTH = 480;
 	private static int CAMERA_HEIGHT = 720;
 
@@ -53,12 +53,16 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	// ===========================================================
 
 	// Shared Preferences
-	private SharedPreferences mSharedPreferences;
+	private SharedPreferences sharedPreferences;
+
+	private String prefTeam = "Beroe.png";
 
 	private Texture mTexture;
 
 	private TiledTextureRegion mTiledTextureRegion;
 	private TextureRegion mTextureRegion;
+
+	private boolean settingsChanged;
 
 	// ===========================================================
 	// Constructors
@@ -71,6 +75,23 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
+
+	// @Override
+	// public void onCreate() {
+	// // TODO Auto-generated method stub
+	// super.onCreate();
+	// // get the system properties
+	// sharedPreferences =
+	// BgTeamsWallpaperService.this.getSharedPreferences(SHARED_PREFS_NAME, 0);
+	// sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+	// onSharedPreferenceChanged(sharedPreferences, null);
+	//
+	// prefTeam = sharedPreferences.getString("teams_options", "Beroe.png");
+	//
+	// //pSharedPrefs.getString("teams_options", "Beroe.png");
+	//
+	// Log.d("onCreate", "ONCREATE :: " + prefTeam);
+	// }
 
 	@Override
 	public org.anddev.andengine.engine.Engine onLoadEngine() {
@@ -109,11 +130,30 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences pSharedPrefs, String pKey) {
+		prefTeam = pSharedPrefs.getString("teams_options", "Beroe.png");
 
+		Log.d("onSharedPreferenceChanged", "CHANGED :: " + prefTeam);
+
+		settingsChanged = true;
+
+	}
+
+	private void initPreferances() {
+		sharedPreferences = BgTeamsWallpaperService.this.getSharedPreferences(SHARED_PREFS_NAME, 0);
+		sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+		onSharedPreferenceChanged(sharedPreferences, null);
+
+		prefTeam = sharedPreferences.getString("teams_options", "Beroe.png");
+
+		Log.d("initPreferances", "INIT PREFERANCES :: " + prefTeam);
 	}
 
 	@Override
 	public void onLoadResources() {
+
+		Log.d("onLoadResources", "onLoadResources -------------");
+
+		initPreferances();
 
 		if (TYPE == 2) {
 			initResourcesMoving();
@@ -124,14 +164,14 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	public void initResourcesStatic() {
 		this.mTexture = new Texture(256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
-		this.mTextureRegion = TextureRegionFactory.createFromAsset(this.mTexture, this, "gfx/bfs.png", 0, 0);
+		this.mTextureRegion = TextureRegionFactory.createFromAsset(this.mTexture, this, "logos256/" + prefTeam, 0, 0);
 
 		this.mEngine.getTextureManager().loadTexture(this.mTexture);
-	} 
+	}
 
 	public void initResourcesMoving() {
 		this.mTexture = new Texture(256, 256, TextureOptions.DEFAULT);
-		this.mTiledTextureRegion = TextureRegionFactory.createTiledFromAsset(this.mTexture, this, "gfx/bfs.png", 0, 0, 1, 1);
+		this.mTiledTextureRegion = TextureRegionFactory.createTiledFromAsset(this.mTexture, this, "logos256/" + prefTeam, 0, 0, 1, 1);
 
 		this.mEngine.getTextureManager().loadTexture(this.mTexture);
 	}
@@ -227,6 +267,7 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	@Override
 	public Scene onLoadScene() {
+		Log.d("WALLY", "onLoadResources ---- ON LAOD SCENE ---------");
 		this.mEngine.registerUpdateHandler(new FPSLogger());
 
 		final Scene scene = new Scene();
@@ -288,11 +329,48 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	@Override
 	public void onPauseGame() {
 		// TODO Auto-generated method stub
+		
+		Log.d("WALLY", "onLoadResources ---- ON PAUSE-GAME--------");
 	}
 
 	@Override
 	public void onResumeGame() {
 		// TODO Auto-generated method stub
+		
+		Log.d("WALLY", "onLoadResources ---- ON RESUME-GAME--------");
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		Log.d("WALLY", "onLoadResources ---- ON RESUME---------");
+		
+		if (settingsChanged) {
+
+			if (TYPE == 2) {
+				initResourcesMoving();
+			} else {
+				initResourcesStatic();
+			}
+			
+			
+			final Scene scene = new Scene();
+			scene.setBackground(new ColorBackground(0.09804f, 0.6274f, 0.8784f));
+
+			if (TYPE == 2) {
+				scene.attachChild(loadSpriteMoving());
+			} else if (TYPE == 3) {
+				scene.attachChild(loadSpriteRotation2D());
+			} else if (TYPE == 4) {
+				scene.attachChild(loadSpriteRotation3D());
+			} else if (TYPE == 5) {
+				scene.attachChild(loadSpritePulsate());
+			} else {
+				scene.attachChild(loadSpriteStatic());
+			}			
+			
+			settingsChanged = false;
+		}
 	}
 
 	// ===========================================================

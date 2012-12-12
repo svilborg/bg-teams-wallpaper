@@ -8,13 +8,25 @@
         android:persistent="true"
         android:title="@string/category_teams" >
         <ListPreference
-            android:defaultValue="1"
+            android:defaultValue="Beroe.png"
             android:entries="@array/teams_options"
             android:entryValues="@array/teams_values"
-            android:key="horizontal_option"
+            android:key="teams_options"
             android:summary="@string/teams_desc"
             android:title="@string/teams" />
-       
     </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:orderingFromXml="true"
+        android:persistent="true"
+        android:title="@string/category_types" >
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/types_options"
+            android:entryValues="@array/types_values"
+            android:key="types_options"
+            android:summary="@string/types_desc" 
+            android:title="@string/types" />
+    </PreferenceCategory> 
 
 </PreferenceScreen>

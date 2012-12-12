@@ -28,8 +28,12 @@
     <string name="team_15">Pirin_Gotse_delchev.png</string>
     <string name="team_16">Slavia.png</string>
     
-    <string name="category_teams">TODO</string>
-    <string name="teams_desc">TODO</string>
-    <string name="teams">TODO</string>
+    <string name="category_teams">Teams Category</string>
+    <string name="teams">Teams</string> 
+    <string name="teams_desc">Choose a team logo</string>
+    
+    <string name="category_types">Wallpeper Settings</string>
+    <string name="types_desc">Type of Logo Movement</string>
+    <string name="types">Types</string>
 
 </resources>
