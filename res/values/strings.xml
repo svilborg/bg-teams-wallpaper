@@ -36,7 +36,7 @@
     <string name="types_desc">Type of Logo Movement</string>
     <string name="types">Types</string>
     
-    <string name="bgcolor">Background</string>
-    <string name="bgcolor_desc">Background Color</string>
+    <string name="bgcolor">Background Color</string>
+    <string name="bgcolor_desc">Pick up a Color</string>
 
 </resources>

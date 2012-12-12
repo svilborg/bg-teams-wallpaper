@@ -25,6 +25,8 @@ import org.anddev.andengine.opengl.texture.region.TextureRegionFactory;
 import org.anddev.andengine.opengl.texture.region.TiledTextureRegion;
 import org.anddev.andengine.opengl.util.GLHelper;
 
+import comix.bgteams.utils.IntRGB;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.DisplayMetrics;
@@ -53,6 +55,7 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	// Shared Preferences
 	private SharedPreferences sharedPreferences = null;
 
+	private int prefBgColor = 0;
 	private String prefTeam = "Beroe.png";
 	private int prefType = 1;
 
@@ -125,8 +128,9 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	public void onSharedPreferenceChanged(SharedPreferences pSharedPrefs, String pKey) {
 		prefTeam = pSharedPrefs.getString("teams_options", "Beroe.png");
 		prefType = Integer.valueOf(sharedPreferences.getString("types_options", "1"));
+		prefBgColor = pSharedPrefs.getInt("bgcolor_options", 0);
 
-		Log.d("WALLY", " ---- CHANGED onSharedPreferenceChanged :: " + prefTeam + " " + String.valueOf(prefType));
+		Log.d("WALLY", " ---- CHANGED onSharedPreferenceChanged :: " + prefTeam + " " + String.valueOf(prefType) + " " + prefBgColor);
 
 		settingsChanged = true;
 		
@@ -262,10 +266,12 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 		this.scene = new Scene();
 		
-		ColorBackground c = new ColorBackground(0.09804f, 0.6274f, 0.8784f);
-		c.setColor(255, 12, 3); 
+		IntRGB intRgb = new IntRGB(prefBgColor);
 		
-		scene.setBackground(c);//new ColorBackground(0.09804f, 0.6274f, 0.8784f));
+		ColorBackground c = new ColorBackground(0f, 0f, 0f);
+		c.setColor(intRgb.red, intRgb.green, intRgb.blue); 
+		
+		scene.setBackground(c);
 
 		scene.clearChildScene();
 

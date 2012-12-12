@@ -28,7 +28,7 @@
             android:title="@string/types" />
     </PreferenceCategory>
 
-    <comix.bgteams.app.ColorDialogPreference
+    <comix.bgteams.app.ColorPreference
         android:key="bgcolor_options"
         android:summary="@string/bgcolor_desc"
         android:title="@string/bgcolor" />
