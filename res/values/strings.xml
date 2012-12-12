@@ -27,5 +27,9 @@
     <string name="team_14">Montana.png</string>
     <string name="team_15">Pirin_Gotse_delchev.png</string>
     <string name="team_16">Slavia.png</string>
+    
+    <string name="category_teams">TODO</string>
+    <string name="teams_desc">TODO</string>
+    <string name="teams">TODO</string>
 
 </resources>

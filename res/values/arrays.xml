@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="horizontal_position_options">
+        <item>Left</item>
+        <item>Center</item>
+        <item>Right</item>
+    </string-array>
+    <string-array name="teams_options">
+        <item>Beroe</item>
+        <item>Botev Plovdiv</item>
+        <item>Botev Vratsa</item>
+        <item>Cherno More</item>
+        <item>Chernomorets</item>
+        <item>CSKA Sofia</item>
+        <item>Etar</item>
+        <item>Levski Sofia</item>
+        <item>Litex Lovech</item>
+        <item>Loko Plovdiv</item>
+        <item>Loko Sofia</item>
+        <item>Ludogorets Razgrad</item>
+        <item>Minyor Pernik</item>
+        <item>Montana</item>
+        <item>Pirin Gotse Delchev</item>
+        <item>Slavia Sofia</item>
+    </string-array>
+
+    <array name="teams_values_num">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+    </array>
+
+    <string-array name="teams_values">
+        <item>Beroe.png</item>
+        <item>Botev_Plovdiv.png</item>
+        <item>Botev_Vratsa.png</item>
+        <item>Cherno_More.png</item>
+        <item>Chernomorets.png</item>
+        <item>CSKA_Sofia.png</item>
+        <item>Etar.png</item>
+        <item>Levski_Sofia.png</item>
+        <item>Litex.png</item>
+        <item>Loko_Plovdiv.png</item>
+        <item>Loko_Sofia.png</item>
+        <item>Ludogorets.png</item>
+        <item>MinyorPernik.png</item>
+        <item>Montana.png</item>
+        <item>Pirin_GD.png</item>
+        <item>Slavia.png</item>
+    </string-array>
+
+</resources>

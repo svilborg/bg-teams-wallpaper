@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="wallpaper_settings"
+    android:title="@string/wallpaper_settings" >
 
-<PreferenceScreen
-		xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="@string/wallpaper_settings"
-        android:key="wallpaper_settings">
+    <PreferenceCategory
+        android:orderingFromXml="true"
+        android:persistent="true"
+        android:title="@string/category_teams" >
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/teams_options"
+            android:entryValues="@array/teams_values"
+            android:key="horizontal_option"
+            android:summary="@string/teams_desc"
+            android:title="@string/teams" />
+       
+    </PreferenceCategory>
+
 </PreferenceScreen>
