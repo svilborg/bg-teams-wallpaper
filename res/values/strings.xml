@@ -8,33 +8,14 @@
     <!-- Settings -->
     <string name="wallpaper_settings">Settings</string>
 
-    <!-- Teams -->
-
-    <string name="team_0">Случаен</string>
-    <string name="team_1">Beroe.png</string>
-    <string name="team_2">Botev_Plovdiv.png</string>
-    <string name="team_3">Botev_Vratsa.png</string>
-    <string name="team_4">Cherno_More.png</string>
-    <string name="team_5">Chernomorets.png</string>
-    <string name="team_6">CSKA_Sofia.png</string>
-    <string name="team_7">Etar.png</string>
-    <string name="team_8">Levski_Sofia.JPG</string>
-    <string name="team_9">Litex.png</string>
-    <string name="team_10">Loko_Plovdiv.png</string>
-    <string name="team_11">Loko_Sofia.png</string>
-    <string name="team_12">Ludogorets.png</string>
-    <string name="team_13">MinyorPernik.png</string>
-    <string name="team_14">Montana.png</string>
-    <string name="team_15">Pirin_Gotse_delchev.png</string>
-    <string name="team_16">Slavia.png</string>
-    
     <string name="category_teams">Teams Category</string>
     <string name="teams">Teams</string> 
     <string name="teams_desc">Choose a team logo</string>
     
     <string name="category_types">Wallpeper Settings</string>
-    <string name="types_desc">Type of Logo Movement</string>
+    <string name="types_desc">Type of Logo Movement</string> 
     <string name="types">Types</string>
+    <string name="animation">Animation</string>
     
     <string name="bgcolor">Background Color</string>
     <string name="bgcolor_desc">Pick up a Color</string>

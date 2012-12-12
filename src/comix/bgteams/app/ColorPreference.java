@@ -29,7 +29,7 @@ import android.widget.CheckedTextView;
  */
 public class ColorPreference extends DialogPreference implements DialogInterface.OnClickListener {
 	// Keeps the colors in the nice integer format
-	private int[] m_colors = { Color.BLACK, Color.GRAY, Color.DKGRAY, Color.BLUE, Color.GREEN, Color.RED, Color.MAGENTA, Color.LTGRAY, Color.MAGENTA, Color.CYAN, Color.YELLOW, Color.WHITE };
+	private int[] m_colors = { Color.BLACK, Color.GRAY, Color.DKGRAY, Color.BLUE, Color.GREEN, Color.RED, Color.MAGENTA, Color.LTGRAY, Color.CYAN, Color.YELLOW, Color.WHITE };
 
 	// Font adaptor responsible for redrawing the item TextView with the
 	// appropriate background color

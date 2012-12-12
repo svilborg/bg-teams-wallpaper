@@ -6,7 +6,8 @@
     <PreferenceCategory
         android:orderingFromXml="true"
         android:persistent="true"
-        android:title="@string/category_teams" >
+        android:title="@string/category_types" >
+        
         <ListPreference
             android:defaultValue="Beroe.png"
             android:entries="@array/teams_options"
@@ -14,23 +15,21 @@
             android:key="teams_options"
             android:summary="@string/teams_desc"
             android:title="@string/teams" />
-    </PreferenceCategory>
-    <PreferenceCategory
-        android:orderingFromXml="true"
-        android:persistent="true"
-        android:title="@string/category_types" >
+            
         <ListPreference
             android:defaultValue="1"
             android:entries="@array/types_options"
             android:entryValues="@array/types_values"
             android:key="types_options"
             android:summary="@string/types_desc"
-            android:title="@string/types" />
-    </PreferenceCategory>
-
+            android:title="@string/animation" />
+    
     <comix.bgteams.app.ColorPreference
         android:key="bgcolor_options"
         android:summary="@string/bgcolor_desc"
         android:title="@string/bgcolor" />
+        
+    </PreferenceCategory>
+
 
 </PreferenceScreen>

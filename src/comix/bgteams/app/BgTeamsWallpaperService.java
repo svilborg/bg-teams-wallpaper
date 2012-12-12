@@ -340,6 +340,7 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	@Override
 	public void onPause() {
+		//sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
 		super.onPause();
 		Log.d("WALLY", " ---- ON PAUSE ---------");
 	}
@@ -347,6 +348,7 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	@Override
 	public void onResume() {
 		super.onResume();
+		//sharedPreferences.registerOnSharedPreferenceChangeListener(this);
 		Log.d("WALLY", " ---- ON RESUME---------");
 
 		if (settingsChanged) {
@@ -362,6 +364,15 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 			}
 			
 			scene.detachChildren();
+			
+			
+			IntRGB intRgb = new IntRGB(prefBgColor);
+			
+			ColorBackground c = new ColorBackground(0f, 0f, 0f);
+			c.setColor(intRgb.red, intRgb.green, intRgb.blue); 
+			
+			scene.setBackground(c);
+			
 
 			if (prefType == 2) {
 				scene.attachChild(loadSpriteMoving());
