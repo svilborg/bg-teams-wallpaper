@@ -132,10 +132,14 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	public void onSharedPreferenceChanged(SharedPreferences pSharedPrefs, String pKey) {
 		prefTeam = pSharedPrefs.getString("teams_options", "Beroe.png");
 
-		Log.d("onSharedPreferenceChanged", "CHANGED :: " + prefTeam);
+		Log.d("WALLY", "CHANGED onSharedPreferenceChanged :: " + prefTeam);
 
 		settingsChanged = true;
-
+		if (TYPE == 2) {
+			initResourcesMoving();
+		} else {
+			initResourcesStatic();
+		}
 	}
 
 	private void initPreferances() {
@@ -145,21 +149,21 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 		prefTeam = sharedPreferences.getString("teams_options", "Beroe.png");
 
-		Log.d("initPreferances", "INIT PREFERANCES :: " + prefTeam);
+		Log.d("WALLY", "INIT PREFERANCES :: " + prefTeam);
 	}
 
 	@Override
 	public void onLoadResources() {
 
-		Log.d("onLoadResources", "onLoadResources -------------");
+		Log.d("WALLY", "onLoadResources -------ON LOAD RESOURCES------");
 
-		initPreferances();
+		sharedPreferences = BgTeamsWallpaperService.this.getSharedPreferences(SHARED_PREFS_NAME, 0);
+		sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+		onSharedPreferenceChanged(sharedPreferences, null);
 
-		if (TYPE == 2) {
-			initResourcesMoving();
-		} else {
-			initResourcesStatic();
-		}
+		prefTeam = sharedPreferences.getString("teams_options", "Beroe.png");
+
+
 	}
 
 	public void initResourcesStatic() {
