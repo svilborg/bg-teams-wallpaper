@@ -2,7 +2,6 @@ package comix.bgteams.app;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import org.anddev.andengine.engine.Engine;
 import org.anddev.andengine.engine.camera.Camera;
 import org.anddev.andengine.engine.handler.physics.PhysicsHandler;
 import org.anddev.andengine.engine.options.EngineOptions;
@@ -13,7 +12,6 @@ import org.anddev.andengine.entity.modifier.ParallelEntityModifier;
 import org.anddev.andengine.entity.modifier.RotationModifier;
 import org.anddev.andengine.entity.modifier.ScaleModifier;
 import org.anddev.andengine.entity.modifier.SequenceEntityModifier;
-import org.anddev.andengine.entity.primitive.Rectangle;
 import org.anddev.andengine.entity.scene.Scene;
 import org.anddev.andengine.entity.scene.background.ColorBackground;
 import org.anddev.andengine.entity.sprite.AnimatedSprite;
@@ -58,7 +56,6 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	private SharedPreferences mSharedPreferences;
 
 	private Texture mTexture;
-	private Camera mCamera;
 
 	private TiledTextureRegion mTiledTextureRegion;
 	private TextureRegion mTextureRegion;
@@ -118,9 +115,7 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	@Override
 	public void onLoadResources() {
 
-		if (TYPE == 1) {
-			initResourcesStatic();
-		} else if (TYPE == 2) {
+		if (TYPE == 2) {
 			initResourcesMoving();
 		} else {
 			initResourcesStatic();
@@ -132,7 +127,7 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 		this.mTextureRegion = TextureRegionFactory.createFromAsset(this.mTexture, this, "gfx/bfs.png", 0, 0);
 
 		this.mEngine.getTextureManager().loadTexture(this.mTexture);
-	}
+	} 
 
 	public void initResourcesMoving() {
 		this.mTexture = new Texture(256, 256, TextureOptions.DEFAULT);
