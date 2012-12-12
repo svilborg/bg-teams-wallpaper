@@ -46,16 +46,15 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	private static final float DEMO_VELOCITY = 30.0f;
 
-	private static int TYPE = 3;
-
 	// ===========================================================
 	// Fields
 	// ===========================================================
 
 	// Shared Preferences
-	private SharedPreferences sharedPreferences;
+	private SharedPreferences sharedPreferences = null;
 
 	private String prefTeam = "Beroe.png";
+	private int prefType = 1;
 
 	private Texture mTexture;
 
@@ -63,6 +62,8 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	private TextureRegion mTextureRegion;
 
 	private boolean settingsChanged;
+
+	Scene scene = null;
 
 	// ===========================================================
 	// Constructors
@@ -76,25 +77,17 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
 
-	// @Override
-	// public void onCreate() {
-	// // TODO Auto-generated method stub
-	// super.onCreate();
-	// // get the system properties
-	// sharedPreferences =
-	// BgTeamsWallpaperService.this.getSharedPreferences(SHARED_PREFS_NAME, 0);
-	// sharedPreferences.registerOnSharedPreferenceChangeListener(this);
-	// onSharedPreferenceChanged(sharedPreferences, null);
-	//
-	// prefTeam = sharedPreferences.getString("teams_options", "Beroe.png");
-	//
-	// //pSharedPrefs.getString("teams_options", "Beroe.png");
-	//
-	// Log.d("onCreate", "ONCREATE :: " + prefTeam);
-	// }
+	@Override
+	public void onCreate() {
+		Log.d("WALLY", " ---- ON CREATE ---------");
+		
+		super.onCreate();
+	}
 
 	@Override
 	public org.anddev.andengine.engine.Engine onLoadEngine() {
+
+		Log.d("WALLY", " ---- ON LOAD ENGINE ---------");
 
 		DisplayMetrics displayMetrics = getDisplayMertics();
 
@@ -120,50 +113,43 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	@Override
 	public void onLoadComplete() {
-
+		Log.d("WALLY", " ---- ON LOAD COMPLETE---------");
 	}
 
 	@Override
 	protected void onTap(final int pX, final int pY) {
-
+		Log.d("WALLY", " ---- ON TAP---------");
 	}
 
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences pSharedPrefs, String pKey) {
 		prefTeam = pSharedPrefs.getString("teams_options", "Beroe.png");
+		prefType = Integer.valueOf(sharedPreferences.getString("types_options", "1"));
 
-		Log.d("WALLY", "CHANGED onSharedPreferenceChanged :: " + prefTeam);
+		Log.d("WALLY", " ---- CHANGED onSharedPreferenceChanged :: " + prefTeam + " " + String.valueOf(prefType));
 
 		settingsChanged = true;
-		if (TYPE == 2) {
+		
+		if (prefType == 2) {
 			initResourcesMoving();
 		} else {
 			initResourcesStatic();
 		}
-	}
-
-	private void initPreferances() {
-		sharedPreferences = BgTeamsWallpaperService.this.getSharedPreferences(SHARED_PREFS_NAME, 0);
-		sharedPreferences.registerOnSharedPreferenceChangeListener(this);
-		onSharedPreferenceChanged(sharedPreferences, null);
-
-		prefTeam = sharedPreferences.getString("teams_options", "Beroe.png");
-
-		Log.d("WALLY", "INIT PREFERANCES :: " + prefTeam);
+		
 	}
 
 	@Override
 	public void onLoadResources() {
-
-		Log.d("WALLY", "onLoadResources -------ON LOAD RESOURCES------");
+		Log.d("WALLY", " ---- ON LOAD RESOURCES ------");
 
 		sharedPreferences = BgTeamsWallpaperService.this.getSharedPreferences(SHARED_PREFS_NAME, 0);
 		sharedPreferences.registerOnSharedPreferenceChangeListener(this);
 		onSharedPreferenceChanged(sharedPreferences, null);
 
 		prefTeam = sharedPreferences.getString("teams_options", "Beroe.png");
+		prefType = Integer.valueOf(sharedPreferences.getString("types_options", "1"));
 
-
+		Log.d("WALLY", " ---- ON LOAD RESOURCES INIT PREFS ------ " + prefTeam + " " + String.valueOf(prefType));
 	}
 
 	public void initResourcesStatic() {
@@ -271,19 +257,25 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	@Override
 	public Scene onLoadScene() {
-		Log.d("WALLY", "onLoadResources ---- ON LAOD SCENE ---------");
+		Log.d("WALLY", " ---- ON LAOD SCENE ---------");
 		this.mEngine.registerUpdateHandler(new FPSLogger());
 
-		final Scene scene = new Scene();
-		scene.setBackground(new ColorBackground(0.09804f, 0.6274f, 0.8784f));
+		this.scene = new Scene();
+		
+		ColorBackground c = new ColorBackground(0.09804f, 0.6274f, 0.8784f);
+		c.setColor(255, 12, 3); 
+		
+		scene.setBackground(c);//new ColorBackground(0.09804f, 0.6274f, 0.8784f));
 
-		if (TYPE == 2) {
+		scene.clearChildScene();
+
+		if (prefType == 2) {
 			scene.attachChild(loadSpriteMoving());
-		} else if (TYPE == 3) {
+		} else if (prefType == 3) {
 			scene.attachChild(loadSpriteRotation2D());
-		} else if (TYPE == 4) {
+		} else if (prefType == 4) {
 			scene.attachChild(loadSpriteRotation3D());
-		} else if (TYPE == 5) {
+		} else if (prefType == 5) {
 			scene.attachChild(loadSpritePulsate());
 		} else {
 			scene.attachChild(loadSpriteStatic());
@@ -332,47 +324,51 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	@Override
 	public void onPauseGame() {
-		// TODO Auto-generated method stub
-		
-		Log.d("WALLY", "onLoadResources ---- ON PAUSE-GAME--------");
+		Log.d("WALLY", " ---- ON PAUSE-GAME--------");
 	}
 
 	@Override
 	public void onResumeGame() {
-		// TODO Auto-generated method stub
-		
-		Log.d("WALLY", "onLoadResources ---- ON RESUME-GAME--------");
+		Log.d("WALLY", " ---- ON RESUME-GAME--------");
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		Log.d("WALLY", " ---- ON PAUSE ---------");
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		Log.d("WALLY", "onLoadResources ---- ON RESUME---------");
-		
+		Log.d("WALLY", " ---- ON RESUME---------");
+
 		if (settingsChanged) {
 
-			if (TYPE == 2) {
+			Log.d("WALLY", " ---- SETTINGS CHANGED ---------");
+
+			// TODO >>> this.mEngine.getTextureManager().loadTexture(this.mTexture); unload !!!
+			
+			if (prefType == 2) {
 				initResourcesMoving();
 			} else {
 				initResourcesStatic();
 			}
 			
-			
-			final Scene scene = new Scene();
-			scene.setBackground(new ColorBackground(0.09804f, 0.6274f, 0.8784f));
+			scene.detachChildren();
 
-			if (TYPE == 2) {
+			if (prefType == 2) {
 				scene.attachChild(loadSpriteMoving());
-			} else if (TYPE == 3) {
+			} else if (prefType == 3) {
 				scene.attachChild(loadSpriteRotation2D());
-			} else if (TYPE == 4) {
+			} else if (prefType == 4) {
 				scene.attachChild(loadSpriteRotation3D());
-			} else if (TYPE == 5) {
+			} else if (prefType == 5) {
 				scene.attachChild(loadSpritePulsate());
 			} else {
 				scene.attachChild(loadSpriteStatic());
-			}			
-			
+			}
+
 			settingsChanged = false;
 		}
 	}

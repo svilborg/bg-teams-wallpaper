@@ -15,7 +15,6 @@
             android:summary="@string/teams_desc"
             android:title="@string/teams" />
     </PreferenceCategory>
-    
     <PreferenceCategory
         android:orderingFromXml="true"
         android:persistent="true"
@@ -25,8 +24,13 @@
             android:entries="@array/types_options"
             android:entryValues="@array/types_values"
             android:key="types_options"
-            android:summary="@string/types_desc" 
+            android:summary="@string/types_desc"
             android:title="@string/types" />
-    </PreferenceCategory> 
+    </PreferenceCategory>
+
+    <comix.bgteams.app.ColorDialogPreference
+        android:key="bgcolor_options"
+        android:summary="@string/bgcolor_desc"
+        android:title="@string/bgcolor" />
 
 </PreferenceScreen>
