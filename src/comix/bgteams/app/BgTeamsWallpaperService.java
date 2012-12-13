@@ -6,6 +6,7 @@ import org.anddev.andengine.engine.camera.Camera;
 import org.anddev.andengine.engine.handler.physics.PhysicsHandler;
 import org.anddev.andengine.engine.options.EngineOptions;
 import org.anddev.andengine.engine.options.EngineOptions.ScreenOrientation;
+import org.anddev.andengine.engine.options.resolutionpolicy.FillResolutionPolicy;
 import org.anddev.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
 import org.anddev.andengine.entity.modifier.LoopEntityModifier;
 import org.anddev.andengine.entity.modifier.ParallelEntityModifier;
@@ -27,12 +28,9 @@ import org.anddev.andengine.opengl.util.GLHelper;
 
 import comix.bgteams.utils.IntRGB;
 
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.DisplayMetrics;
+import android.content.res.Configuration;
 import android.util.Log;
-import android.view.Display;
-import android.view.WindowManager;
 
 public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements SharedPreferences.OnSharedPreferenceChangeListener {
 	// ===========================================================
@@ -64,9 +62,10 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	private TiledTextureRegion mTiledTextureRegion;
 	private TextureRegion mTextureRegion;
 
-	private boolean settingsChanged;
-
 	Scene scene = null;
+
+	private Camera mCamera;
+	private ScreenOrientation mScreenOrientation;
 
 	// ===========================================================
 	// Constructors
@@ -83,7 +82,7 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	@Override
 	public void onCreate() {
 		Log.d("WALLY", " ---- ON CREATE ---------");
-		
+
 		super.onCreate();
 	}
 
@@ -92,26 +91,30 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 		Log.d("WALLY", " ---- ON LOAD ENGINE ---------");
 
-		DisplayMetrics displayMetrics = getDisplayMertics();
+		CAMERA_HEIGHT = this.getResources().getDisplayMetrics().heightPixels;
+		CAMERA_WIDTH = this.getResources().getDisplayMetrics().widthPixels;
 
-		CAMERA_HEIGHT = displayMetrics.heightPixels;
-		CAMERA_WIDTH = displayMetrics.widthPixels;
+		Log.d("WALLY", " ---- HEIGHT ---------" + CAMERA_HEIGHT);
+		Log.d("WALLY", " ---- WIDTH ---------" + CAMERA_WIDTH);
 
-		Camera mCamera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
+		mCamera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
 		mCamera.setZClippingPlanes(-100, 100);
 
-		return new org.anddev.andengine.engine.Engine(new EngineOptions(true, ScreenOrientation.LANDSCAPE, new RatioResolutionPolicy(CAMERA_WIDTH, CAMERA_HEIGHT), mCamera));
+		// return new org.anddev.andengine.engine.Engine(new EngineOptions(true,
+		// ScreenOrientation.PORTRAIT, new RatioResolutionPolicy(CAMERA_WIDTH,
+		// CAMERA_HEIGHT), mCamera));
+		return new org.anddev.andengine.engine.Engine(new EngineOptions(true, this.mScreenOrientation, new FillResolutionPolicy(), mCamera));
 	}
 
-	private DisplayMetrics getDisplayMertics() {
-		// get screen size
-		WindowManager windowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+	public org.anddev.andengine.engine.Engine getEngine() {
 
-		Display display = windowManager.getDefaultDisplay();
-		DisplayMetrics displayMetrics = new DisplayMetrics();
-		display.getMetrics(displayMetrics);
+		CAMERA_HEIGHT = this.getResources().getDisplayMetrics().heightPixels;// displayMetrics.heightPixels;
+		CAMERA_WIDTH = this.getResources().getDisplayMetrics().widthPixels;// displayMetrics.widthPixels;
 
-		return displayMetrics;
+		mCamera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
+		// mEngine.setCamera(mCamera);
+
+		return mEngine;
 	}
 
 	@Override
@@ -132,14 +135,25 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 		Log.d("WALLY", " ---- CHANGED onSharedPreferenceChanged :: " + prefTeam + " " + String.valueOf(prefType) + " " + prefBgColor);
 
-		settingsChanged = true;
+		
 		
 		if (prefType == 2) {
 			initResourcesMoving();
 		} else {
 			initResourcesStatic();
 		}
-		
+
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+			scene.setScaleX(1280.0f / 800.0f);
+			scene.setScaleY(1.0f);
+		} else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+			scene.setScale(1);
+		}
+
 	}
 
 	@Override
@@ -261,19 +275,19 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	@Override
 	public Scene onLoadScene() {
-		Log.d("WALLY", " ---- ON LAOD SCENE ---------");
+		Log.d("WALLY", " ---- ON LOAD SCENE ---------");
 		this.mEngine.registerUpdateHandler(new FPSLogger());
 
 		this.scene = new Scene();
-		
+
 		IntRGB intRgb = new IntRGB(prefBgColor);
-		
+
 		ColorBackground c = new ColorBackground(0f, 0f, 0f);
-		c.setColor(intRgb.red, intRgb.green, intRgb.blue); 
-		
+		c.setColor(intRgb.red, intRgb.green, intRgb.blue);
+
 		scene.setBackground(c);
 
-		scene.clearChildScene();
+		// scene.clearChildScene();
 
 		if (prefType == 2) {
 			scene.attachChild(loadSpriteMoving());
@@ -289,10 +303,6 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 		return scene;
 	}
-
-	// ===========================================================
-	// Methods
-	// ===========================================================
 
 	// ===========================================================
 	// Inner and Anonymous Classes
@@ -340,7 +350,7 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	@Override
 	public void onPause() {
-		//sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
+		// sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
 		super.onPause();
 		Log.d("WALLY", " ---- ON PAUSE ---------");
 	}
@@ -348,53 +358,33 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	@Override
 	public void onResume() {
 		super.onResume();
-		//sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+		// sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+
 		Log.d("WALLY", " ---- ON RESUME---------");
 
-		if (settingsChanged) {
+		// if (settingsChanged) {
 
-			Log.d("WALLY", " ---- SETTINGS CHANGED ---------");
+		Log.d("WALLY", " ---- SETTINGS CHANGED ---------");
 
-			// TODO >>> this.mEngine.getTextureManager().loadTexture(this.mTexture); unload !!!
-			
-			if (prefType == 2) {
-				initResourcesMoving();
-			} else {
-				initResourcesStatic();
-			}
-			
-			scene.detachChildren();
-			
-			
-			IntRGB intRgb = new IntRGB(prefBgColor);
-			
-			ColorBackground c = new ColorBackground(0f, 0f, 0f);
-			c.setColor(intRgb.red, intRgb.green, intRgb.blue); 
-			
-			scene.setBackground(c);
-			
+		if (this.mEngine.getScene() != null) {
+			Log.d("WALLY", " ---- DETATCH !!!!! ---------");
+			// this.mEngine.setSurfaceSize(CAMERA_WIDTH, CAMERA_HEIGHT);
 
-			if (prefType == 2) {
-				scene.attachChild(loadSpriteMoving());
-			} else if (prefType == 3) {
-				scene.attachChild(loadSpriteRotation2D());
-			} else if (prefType == 4) {
-				scene.attachChild(loadSpriteRotation3D());
-			} else if (prefType == 5) {
-				scene.attachChild(loadSpritePulsate());
-			} else {
-				scene.attachChild(loadSpriteStatic());
-			}
+			this.mEngine.getScene().detachChildren();
 
-			settingsChanged = false;
+			this.onLoadEngine();
+
+			// this.onLoadResources();
+			this.onLoadScene();
+
+			this.mEngine.onLoadComplete(scene);
 		}
+
+		// this.mEngine.getTextureManager().loadTexture(this.mTexture);
+		// unload !!!
+		// }
+		// else {
+		// Log.d("WALLY", " ---- SETTINGS NOT CHANGED ---------");
+		// }
 	}
-
-	// ===========================================================
-	// Methods
-	// ===========================================================
-
-	// ===========================================================
-	// Inner and Anonymous Classes
-	// ===========================================================
 }
