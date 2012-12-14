@@ -2,7 +2,7 @@ package comix.bgteams.app;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import org.anddev.andengine.engine.camera.Camera;
+import org.anddev.andengine.engine.camera.Camera; 
 import org.anddev.andengine.engine.handler.physics.PhysicsHandler;
 import org.anddev.andengine.engine.options.EngineOptions;
 import org.anddev.andengine.engine.options.EngineOptions.ScreenOrientation;

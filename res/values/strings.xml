@@ -19,5 +19,13 @@
     
     <string name="bgcolor">Background Color</string>
     <string name="bgcolor_desc">Pick up a Color</string>
+    <string name="set_wallpaper">TODO</string>
+    <string name="settings">TODO</string>
+    <string name="how_to_enable">TODO</string>
+    <string name="how_to_enable_step1">TODO</string>
+    <string name="how_to_enable_step2">TODO</string>
+    <string name="how_to_enable_step3">TODO</string>
+    <string name="how_to_enable_step4">TODO</string>
+    <string name="how_to_enable_step5">TODO</string>
 
 </resources>
