@@ -2,11 +2,12 @@
 <resources>
 
     <string-array name="types_options">
-        <item>Static</item>
-        <item>Moving</item>
-        <item>Rotation 2D</item>
-        <item>Rotation 3D</item>
+        <item>Статично</item>
+        <item>Движение</item>
+        <item>Ротация 2D</item>
+        <item>Ротация 3D</item>
     </string-array>
+    
     <string-array name="types_values">
         <item>1</item>
         <item>2</item>
@@ -15,22 +16,22 @@
     </string-array>
     
     <string-array name="teams_options">
-        <item>Beroe</item>
-        <item>Botev Plovdiv</item>
-        <item>Botev Vratsa</item>
-        <item>Cherno More</item>
-        <item>Chernomorets</item>
-        <item>CSKA Sofia</item>
-        <item>Etar</item>
-        <item>Levski Sofia</item>
-        <item>Litex Lovech</item>
-        <item>Loko Plovdiv</item>
-        <item>Loko Sofia</item>
-        <item>Ludogorets Razgrad</item>
-        <item>Minyor Pernik</item>
-        <item>Montana</item>
-        <item>Pirin Gotse Delchev</item>
-        <item>Slavia Sofia</item>
+        <item>Берое</item>
+        <item>Ботев Пловдив</item>
+        <item>Ботев Враца</item>
+        <item>Черно море</item>
+        <item>Черноморец</item>
+        <item>ЦСКА (София)</item>
+        <item>Етър</item>
+        <item>Левски (София)</item>
+        <item>Литекс</item>
+        <item>Локо Пловдив</item>
+        <item>Локо София</item>
+        <item>Лудогорец Разград</item>
+        <item>Миньор Перник</item>
+        <item>Монтана</item>
+        <item>Пирин Гоце Делчев</item>
+        <item>Славия София</item>
     </string-array>
 
     <string-array name="teams_values">
