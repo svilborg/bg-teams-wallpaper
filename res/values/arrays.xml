@@ -15,41 +15,73 @@
     </string-array>
     
     <string-array name="teams_options">
-        <item>Beroe</item>
+        <item>Bdin Vidin</item>
+        <item>Beroe Stara Zagora</item>
         <item>Botev Plovdiv</item>
         <item>Botev Vratsa</item>
-        <item>Cherno More</item>
-        <item>Chernomorets</item>
+        <item>Chavdar Etropole</item>
+        <item>Cherno More Varna</item>
+        <item>Chernomorets Bourgas</item>
         <item>CSKA Sofia</item>
-        <item>Etar</item>
+        <item>Dobrudzha Dobrich</item>
+        <item>Etar Veliko Tarnovo</item>
+        <item>Hebar Pazardjik</item>
+        <item>Kaliakra Kavarna</item>
         <item>Levski Sofia</item>
         <item>Litex Lovech</item>
         <item>Loko Plovdiv</item>
         <item>Loko Sofia</item>
         <item>Ludogorets Razgrad</item>
+        <item>Marek Dupnitsa</item>
         <item>Minyor Pernik</item>
         <item>Montana</item>
+        <item>Neftochimic Bourgas</item>
+        <item>Pirin Blagoevgrad</item>
         <item>Pirin Gotse Delchev</item>
+        <item>Septemvri Sofia</item>
+        <item>Shumen</item>
         <item>Slavia Sofia</item>
+        <item>Spartak Varna</item>
+        <item>Spartak Pleven</item>
+        <item>Svetkavitza Targovishte</item>
+        <item>Velbazhd Kuistendil</item>
+        <item>Vidima Rakovski</item>
+        <item>Yantra Gabrovo</item>
     </string-array>
-
+    
     <string-array name="teams_values">
+        <item>Bdin_Vidin.png</item>
         <item>Beroe.png</item>
         <item>Botev_Plovdiv.png</item>
         <item>Botev_Vratsa.png</item>
+        <item>Chavdar_Etropole.png</item>
         <item>Cherno_More.png</item>
         <item>Chernomorets.png</item>
         <item>CSKA_Sofia.png</item>
+        <item>Dobrudzha_Dobrich.png</item>
         <item>Etar.png</item>
+        <item>Hebar_Pazardjik.png</item>
+        <item>Kaliakra_Kavarna.png</item>
         <item>Levski_Sofia.png</item>
         <item>Litex.png</item>
         <item>Loko_Plovdiv.png</item>
         <item>Loko_Sofia.png</item>
         <item>Ludogorets.png</item>
+        <item>Marek_Dupnitsa.png</item>
         <item>MinyorPernik.png</item>
         <item>Montana.png</item>
+        <item>Neftochimic_Bourgas.png</item>
+        <item>Pirin_Blagoevgrad.png</item>
         <item>Pirin_GD.png</item>
+        <item>Septemvri_Sofia.png</item>
+        <item>Shumen.png</item>
         <item>Slavia.png</item>
+        <item>Spartak_Varna.png</item>
+        <item>Spartak_Pleven.png</item>
+        <item>Svetkavitza.png</item>
+        <item>Velbazhd_Kuistendil.png</item>
+        <item>Vidima_Rakovski.png</item>
+        <item>Yantra_Gabrovo.png</item>
     </string-array>
 
 </resources>
