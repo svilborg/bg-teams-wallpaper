@@ -18,7 +18,14 @@
     
     <string name="bgcolor">Background Color</string>
     <string name="bgcolor_desc">Pick up a Color</string>
-    <string name="how_to_enable">TODO</string>
-    <string name="set_wallpaper">TODO</string>
+    
+    <string name="set_wallpaper">Set wallpaper</string>
+    <string name="settings">Settings</string>    
+    
+    <string name="how_to_enable"><![CDATA[
+		<p><b>Bulgarian Teams Wallpaper gives you the ability to set your favorite team logo as a Live Wallpaper to your phone</b></p>
+		
+		<p>Press Set Wallpaper button, launch BG Teams Wallpaper and use Settings .. to configure the Live Wallpaper.</p>
+		]]> </string>
 
 </resources>

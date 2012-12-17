@@ -1,48 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?>  
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="comix.bgteams.app"
-      android:versionCode="1"
-      android:versionName="0.1">
-      
+    package="comix.bgteams.app"
+    android:versionCode="1"
+    android:versionName="0.1" >
+
     <uses-sdk
+        android:maxSdkVersion="17"
         android:minSdkVersion="8"
-        android:maxSdkVersion="17" 
         android:targetSdkVersion="17" />
-      
-      <uses-feature android:name="android.software.live_wallpaper" />
-      
-    <application android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:allowBackup="false">
-    	
-    	<service
+
+    <uses-feature android:name="android.software.live_wallpaper" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <service
             android:name=".BgTeamsWallpaperService"
-			android:enabled="true"
-			android:icon="@drawable/ic_launcher"
-			android:label="@string/app_name"
-			android:permission="android.permission.BIND_WALLPAPER">
+            android:enabled="true"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_WALLPAPER" >
             <intent-filter>
                 <action android:name="android.service.wallpaper.WallpaperService" />
             </intent-filter>
+
             <meta-data
-            	android:name="android.service.wallpaper" 
-            	android:resource="@xml/wallpaper" />
+                android:name="android.service.wallpaper"
+                android:resource="@xml/wallpaper" />
         </service>
-        
-        <activity android:name=".MainActivity"
-			android:label="@string/app_name"
-			android:icon="@drawable/ic_launcher"
-			android:screenOrientation="portrait">
-			<intent-filter>
-            	<action android:name="android.intent.action.MAIN" />
+
+        <activity
+            android:name=".MainActivity"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-       </activity>         
-        
-        <activity
-        	android:label="@string/wallpaper_settings"
-        	android:name=".BgTeamsWallpaperSettings"
-        	android:theme="@android:style/Theme.Light.WallpaperSettings"
-        	android:exported="true">
         </activity>
-        
+        <activity
+            android:name=".BgTeamsWallpaperSettings"
+            android:exported="true"
+            android:label="@string/wallpaper_settings"
+            android:theme="@android:style/Theme.Light.WallpaperSettings" >
+        </activity>
     </application>
-</manifest> 
+
+</manifest>

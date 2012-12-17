@@ -100,8 +100,7 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 		mCamera.setZClippingPlanes(-100, 100);
 
 		// return new org.anddev.andengine.engine.Engine(new EngineOptions(true,
-		// ScreenOrientation.PORTRAIT, new RatioResolutionPolicy(CAMERA_WIDTH,
-		// CAMERA_HEIGHT), mCamera));
+		// ScreenOrientation.PORTRAIT, new RatioResolutionPolicy(CAMERA_WIDTH, CAMERA_HEIGHT), mCamera));
 		return new org.anddev.andengine.engine.Engine(new EngineOptions(true, this.mScreenOrientation, new FillResolutionPolicy(), mCamera));
 	}
 
