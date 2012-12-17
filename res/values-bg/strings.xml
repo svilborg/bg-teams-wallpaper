@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Тапет на Българските отбори</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="wallpaper_description">Bulgarian Teams Wallpaper</string>
+
+    <!-- Settings -->
+    <string name="wallpaper_settings">Настройки</string>
+
+    <string name="teams">Отбори</string> 
+    <string name="teams_desc">Избор на емблема</string>
+    
+    <string name="category_types">Настройки на тапета</string>
+    <string name="types_desc">Вид на анимацията</string> 
+    <string name="types">Типове</string>
+    <string name="animation">Анимация</string>
+    
+    <string name="bgcolor">Цвят на фона</string>
+    <string name="bgcolor_desc">Избор на цвят на фона</string>
+    
+    <string name="set_wallpaper">Добавяне на тапет</string>
+    <string name="settings">Настройки</string>    
+    
+    <string name="how_to_enable"><![CDATA[
+		<p><b>Приложението ви дава възможност да използвате емблемата на предпочитания си отбор като тапет на вашия телефон.</b></p>
+		
+		<p>Натиснете бутона за избор на емблема, стартирайте <b>Тапет на Българските отбори</b> и използвайте Настройки .. за да конфигурирате вашия тапет.</p>
+		]]> </string>
+</resources>
