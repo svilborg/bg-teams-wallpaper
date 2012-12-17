@@ -15,42 +15,74 @@
         <item>4</item>
     </string-array>
     
-    <string-array name="teams_options">
-        <item>Берое</item>
-        <item>Ботев Пловдив</item>
-        <item>Ботев Враца</item>
-        <item>Черно море</item>
-        <item>Черноморец</item>
-        <item>ЦСКА (София)</item>
-        <item>Етър</item>
-        <item>Левски (София)</item>
-        <item>Литекс</item>
-        <item>Локо Пловдив</item>
-        <item>Локо София</item>
-        <item>Лудогорец Разград</item>
-        <item>Миньор Перник</item>
-        <item>Монтана</item>
-        <item>Пирин Гоце Делчев</item>
-        <item>Славия София</item>
+   <string-array name="teams_options">
+        <item>Бдин Видин </item>
+        <item>Берое Стара Загора </item>
+        <item>Ботев Пловдив </item>
+        <item>Ботев Враца </item>
+        <item>Чавдар Етрополе </item>
+        <item>Черно Море Варна </item>
+        <item>Черноморец Бургас </item>
+        <item>ЦСКА (София) </item>
+        <item>Добруджа Добрич </item>
+        <item>Етър Велико Търново </item>
+        <item>Хебър Пазарджик </item>
+        <item>Калиакра Каварна </item>
+        <item>Левски (София) </item>
+        <item>Литекс </item>
+        <item>Локо Пловдив </item>
+        <item>Локо София </item>
+        <item>Лудогорец Разград </item>
+        <item>Марек Дупница </item>
+        <item>Миньор Перник </item>
+        <item>Монтана </item>
+        <item>Нефтохимик Бургас </item>
+        <item>Пирин Благоевград </item>
+        <item>Пирин Гоце Делчев </item>
+        <item>Септември София </item>
+        <item>Шумен </item>
+        <item>Славия София </item>
+        <item>Спартак Варна </item>
+        <item>Спартак Плевен </item>
+        <item>Светкавица Търговище </item>
+        <item>Велбъжд Kuistendil </item>
+        <item>Видима Раковски </item>
+        <item>Янтра Габрово </item>
     </string-array>
 
-    <string-array name="teams_values">
+  <string-array name="teams_values">
+        <item>Bdin_Vidin.png</item>
         <item>Beroe.png</item>
         <item>Botev_Plovdiv.png</item>
         <item>Botev_Vratsa.png</item>
+        <item>Chavdar_Etropole.png</item>
         <item>Cherno_More.png</item>
         <item>Chernomorets.png</item>
         <item>CSKA_Sofia.png</item>
+        <item>Dobrudzha_Dobrich.png</item>
         <item>Etar.png</item>
+        <item>Hebar_Pazardjik.png</item>
+        <item>Kaliakra_Kavarna.png</item>
         <item>Levski_Sofia.png</item>
         <item>Litex.png</item>
         <item>Loko_Plovdiv.png</item>
         <item>Loko_Sofia.png</item>
         <item>Ludogorets.png</item>
+        <item>Marek_Dupnitsa.png</item>
         <item>MinyorPernik.png</item>
         <item>Montana.png</item>
+        <item>Neftochimic_Bourgas.png</item>
+        <item>Pirin_Blagoevgrad.png</item>
         <item>Pirin_GD.png</item>
+        <item>Septemvri_Sofia.png</item>
+        <item>Shumen.png</item>
         <item>Slavia.png</item>
+        <item>Spartak_Varna.png</item>
+        <item>Spartak_Pleven.png</item>
+        <item>Svetkavitza.png</item>
+        <item>Velbazhd_Kuistendil.png</item>
+        <item>Vidima_Rakovski.png</item>
+        <item>Yantra_Gabrovo.png</item>
     </string-array>
 
 </resources>
