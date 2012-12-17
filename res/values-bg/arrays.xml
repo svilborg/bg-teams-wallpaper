@@ -16,38 +16,38 @@
     </string-array>
     
    <string-array name="teams_options">
-        <item>Бдин Видин </item>
-        <item>Берое Стара Загора </item>
-        <item>Ботев Пловдив </item>
-        <item>Ботев Враца </item>
-        <item>Чавдар Етрополе </item>
-        <item>Черно Море Варна </item>
-        <item>Черноморец Бургас </item>
-        <item>ЦСКА (София) </item>
-        <item>Добруджа Добрич </item>
-        <item>Етър Велико Търново </item>
-        <item>Хебър Пазарджик </item>
-        <item>Калиакра Каварна </item>
-        <item>Левски (София) </item>
-        <item>Литекс </item>
-        <item>Локо Пловдив </item>
-        <item>Локо София </item>
-        <item>Лудогорец Разград </item>
-        <item>Марек Дупница </item>
-        <item>Миньор Перник </item>
-        <item>Монтана </item>
-        <item>Нефтохимик Бургас </item>
-        <item>Пирин Благоевград </item>
-        <item>Пирин Гоце Делчев </item>
-        <item>Септември София </item>
-        <item>Шумен </item>
-        <item>Славия София </item>
-        <item>Спартак Варна </item>
-        <item>Спартак Плевен </item>
-        <item>Светкавица Търговище </item>
-        <item>Велбъжд Kuistendil </item>
-        <item>Видима Раковски </item>
-        <item>Янтра Габрово </item>
+        <item>Бдин Видин</item>
+        <item>Берое Стара Загора</item>
+        <item>Ботев Пловдив</item>
+        <item>Ботев Враца</item>
+        <item>Чавдар Етрополе</item>
+        <item>Черно Море Варна</item>
+        <item>Черноморец Бургас</item>
+        <item>ЦСКА (София)</item>
+        <item>Добруджа Добрич</item>
+        <item>Етър Велико Търново</item>
+        <item>Хебър Пазарджик</item>
+        <item>Калиакра Каварна</item>
+        <item>Левски (София)</item>
+        <item>Литекс</item>
+        <item>Локо Пловдив</item>
+        <item>Локо София</item>
+        <item>Лудогорец Разград</item>
+        <item>Марек Дупница</item>
+        <item>Миньор Перник</item>
+        <item>Монтана</item>
+        <item>Нефтохимик Бургас</item>
+        <item>Пирин Благоевград</item>
+        <item>Пирин Гоце Делчев</item>
+        <item>Септември София</item>
+        <item>Шумен</item>
+        <item>Славия София</item>
+        <item>Спартак Варна</item>
+        <item>Спартак Плевен</item>
+        <item>Светкавица Търговище</item>
+        <item>Велбъжд Кюстендил</item>
+        <item>Видима Раковски</item>
+        <item>Янтра Габрово</item>
     </string-array>
 
   <string-array name="teams_values">
