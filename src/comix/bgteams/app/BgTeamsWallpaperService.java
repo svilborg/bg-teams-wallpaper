@@ -138,7 +138,6 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 		} else {
 			initResourcesStatic();
 		}
-
 	}
 
 	@Override
