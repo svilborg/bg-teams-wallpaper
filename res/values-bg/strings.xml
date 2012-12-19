@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Тапет на Българските отбори</string>
+    <string name="app_name">Български Отбори</string>
     <string name="menu_settings">Настройки</string>
-    <string name="wallpaper_description">Bulgarian Teams Wallpaper</string>
+    <string name="wallpaper_description">Тапет на Българските отбори</string>
 
     <!-- Settings -->
     <string name="wallpaper_settings">Настройки</string>
@@ -23,8 +23,8 @@
     <string name="settings">Настройки</string>    
     
     <string name="how_to_enable"><![CDATA[
-		<p><b>Приложението ви дава възможност да използвате емблемата на предпочитания си отбор като тапет на вашия телефон.</b></p>
+		<p><b>Приложението ви дава възможност да използвате емблемата на предпочитания от вас отбор като динамичен тапет.</b></p>
 		
-		<p>Натиснете бутона за избор на емблема, стартирайте <b>Тапет на Българските отбори</b> и използвайте Настройки .. за да конфигурирате вашия тапет.</p>
+		<p>Натиснете бутона за избор на емблема, стартирайте <b>Тапет Български отбори</b> и използвайте Настройки .. за да конфигурирате вашия тапет.</p>
 		]]> </string>
 </resources>

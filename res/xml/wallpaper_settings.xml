@@ -7,7 +7,6 @@
         android:orderingFromXml="true"
         android:persistent="true"
         android:title="@string/category_types" >
-        
         <ListPreference
             android:defaultValue="Beroe.png"
             android:entries="@array/teams_options"
@@ -15,7 +14,6 @@
             android:key="teams_options"
             android:summary="@string/teams_desc"
             android:title="@string/teams" />
-            
         <ListPreference
             android:defaultValue="1"
             android:entries="@array/types_options"
@@ -23,13 +21,12 @@
             android:key="types_options"
             android:summary="@string/types_desc"
             android:title="@string/animation" />
-    
-    <comix.bgteams.app.ColorPreference
-        android:key="bgcolor_options"
-        android:summary="@string/bgcolor_desc"
-        android:title="@string/bgcolor" />
-        
-    </PreferenceCategory>
 
+        <yuku.ambilwarna.widget.AmbilWarnaPreference
+            android:defaultValue="0xff6699cc"
+            android:key="bgcolor_options"
+            android:summary="@string/bgcolor_desc"
+            android:title="@string/bgcolor" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

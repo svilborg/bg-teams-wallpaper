@@ -38,8 +38,9 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	public static final String SHARED_PREFS_NAME = "livewallpapertemplatesettings";
 
-	// Camera Constants
+	private static boolean DEBUG = true;
 
+	// Camera Constants
 	private static int CAMERA_WIDTH = 480;
 	private static int CAMERA_HEIGHT = 720;
 
@@ -80,7 +81,9 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	@Override
 	public void onCreate() {
-		Log.d("WALLY", " ---- ON CREATE ---------");
+		if (DEBUG) {
+			Log.d("WALLY", " ---- ON CREATE ---------");
+		}
 
 		super.onCreate();
 	}
@@ -88,41 +91,48 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	@Override
 	public org.anddev.andengine.engine.Engine onLoadEngine() {
 
-		Log.d("WALLY", " ---- ON LOAD ENGINE ---------");
-
 		CAMERA_HEIGHT = this.getResources().getDisplayMetrics().heightPixels;
 		CAMERA_WIDTH = this.getResources().getDisplayMetrics().widthPixels;
 
-		Log.d("WALLY", " ---- HEIGHT ---------" + CAMERA_HEIGHT);
-		Log.d("WALLY", " ---- WIDTH ---------" + CAMERA_WIDTH);
+		if (DEBUG) {
+			Log.d("WALLY", " ---- ON LOAD ENGINE ---------");
+			Log.d("WALLY", " ---- HEIGHT ---------" + CAMERA_HEIGHT);
+			Log.d("WALLY", " ---- WIDTH ---------" + CAMERA_WIDTH);
+		}
 
 		mCamera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
 		mCamera.setZClippingPlanes(-100, 100);
 
 		// return new org.anddev.andengine.engine.Engine(new EngineOptions(true,
-		// ScreenOrientation.PORTRAIT, new RatioResolutionPolicy(CAMERA_WIDTH, CAMERA_HEIGHT), mCamera));
+		// ScreenOrientation.PORTRAIT, new RatioResolutionPolicy(CAMERA_WIDTH,
+		// CAMERA_HEIGHT), mCamera));
 		return new org.anddev.andengine.engine.Engine(new EngineOptions(true, this.mScreenOrientation, new FillResolutionPolicy(), mCamera));
 	}
 
-	public org.anddev.andengine.engine.Engine getEngine() {
-
-		CAMERA_HEIGHT = this.getResources().getDisplayMetrics().heightPixels;// displayMetrics.heightPixels;
-		CAMERA_WIDTH = this.getResources().getDisplayMetrics().widthPixels;// displayMetrics.widthPixels;
-
-		mCamera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
-		// mEngine.setCamera(mCamera);
-
-		return mEngine;
-	}
+	// public org.anddev.andengine.engine.Engine getEngine() {
+	//
+	// CAMERA_HEIGHT = this.getResources().getDisplayMetrics().heightPixels;//
+	// displayMetrics.heightPixels;
+	// CAMERA_WIDTH = this.getResources().getDisplayMetrics().widthPixels;//
+	// displayMetrics.widthPixels;
+	//
+	// mCamera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
+	//
+	// return mEngine;
+	// }
 
 	@Override
 	public void onLoadComplete() {
-		Log.d("WALLY", " ---- ON LOAD COMPLETE---------");
+		if (DEBUG) {
+			Log.d("WALLY", " ---- ON LOAD COMPLETE---------");
+		}
 	}
 
 	@Override
 	protected void onTap(final int pX, final int pY) {
-		Log.d("WALLY", " ---- ON TAP---------");
+		if (DEBUG) {
+			Log.d("WALLY", " ---- ON TAP---------");
+		}
 	}
 
 	@Override
@@ -131,7 +141,9 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 		prefType = Integer.valueOf(sharedPreferences.getString("types_options", "1"));
 		prefBgColor = pSharedPrefs.getInt("bgcolor_options", 0);
 
-		Log.d("WALLY", " ---- CHANGED onSharedPreferenceChanged :: " + prefTeam + " " + String.valueOf(prefType) + " " + prefBgColor);
+		if (DEBUG) {
+			Log.d("WALLY", " ---- CHANGED onSharedPreferenceChanged :: " + prefTeam + " " + String.valueOf(prefType) + " " + prefBgColor);
+		}
 
 		if (prefType == 2) {
 			initResourcesMoving();
@@ -142,10 +154,23 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
+
+		if (DEBUG) {
+			Log.d("WALLY", " ---- ON Configuration Changed---------");
+		}
+
 		if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+
+			Log.d("WALLY", " ---- ORIENTATION_PORTRAIT Configuration Changed---------");
+
 			scene.setScaleX(1280.0f / 800.0f);
 			scene.setScaleY(1.0f);
 		} else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+			if (DEBUG) {
+				Log.d("WALLY", " ---- ORIENTATION_LANDSCAPE Configuration Changed---------");
+			}
+
 			scene.setScale(1);
 		}
 
@@ -153,7 +178,9 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	@Override
 	public void onLoadResources() {
-		Log.d("WALLY", " ---- ON LOAD RESOURCES ------");
+		if (DEBUG) {
+			Log.d("WALLY", " ---- ON LOAD RESOURCES ------");
+		}
 
 		sharedPreferences = BgTeamsWallpaperService.this.getSharedPreferences(SHARED_PREFS_NAME, 0);
 		sharedPreferences.registerOnSharedPreferenceChangeListener(this);
@@ -162,7 +189,9 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 		prefTeam = sharedPreferences.getString("teams_options", "Beroe.png");
 		prefType = Integer.valueOf(sharedPreferences.getString("types_options", "1"));
 
-		Log.d("WALLY", " ---- ON LOAD RESOURCES INIT PREFS ------ " + prefTeam + " " + String.valueOf(prefType));
+		if (DEBUG) {
+			Log.d("WALLY", " ---- ON LOAD RESOURCES INIT PREFS ------ " + prefTeam + " " + String.valueOf(prefType));
+		}
 	}
 
 	public void initResourcesStatic() {
@@ -270,7 +299,10 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	@Override
 	public Scene onLoadScene() {
-		Log.d("WALLY", " ---- ON LOAD SCENE ---------");
+		if (DEBUG) {
+			Log.d("WALLY", " ---- ON LOAD SCENE ---------");
+		}
+
 		this.mEngine.registerUpdateHandler(new FPSLogger());
 
 		this.scene = new Scene();
@@ -335,19 +367,25 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	@Override
 	public void onPauseGame() {
-		Log.d("WALLY", " ---- ON PAUSE-GAME--------");
+		if (DEBUG) {
+			Log.d("WALLY", " ---- ON PAUSE-GAME--------");
+		}
 	}
 
 	@Override
 	public void onResumeGame() {
-		Log.d("WALLY", " ---- ON RESUME-GAME--------");
+		if (DEBUG) {
+			Log.d("WALLY", " ---- ON RESUME-GAME--------");
+		}
 	}
 
 	@Override
 	public void onPause() {
 		// sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
 		super.onPause();
-		Log.d("WALLY", " ---- ON PAUSE ---------");
+		if (DEBUG) {
+			Log.d("WALLY", " ---- ON PAUSE ---------");
+		}
 	}
 
 	@Override
@@ -355,17 +393,28 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 		super.onResume();
 		// sharedPreferences.registerOnSharedPreferenceChangeListener(this);
 
-		Log.d("WALLY", " ---- ON RESUME---------");
+		if (DEBUG) {
+			Log.d("WALLY", " ---- ON RESUME---------");
+		}
 
 		// if (settingsChanged) {
-
 		Log.d("WALLY", " ---- SETTINGS CHANGED ---------");
 
 		if (this.mEngine.getScene() != null) {
-			Log.d("WALLY", " ---- DETATCH !!!!! ---------");
+			if (DEBUG) {
+				Log.d("WALLY", " ---- DETATCH !!!!! ---------");
+			}
+
 			// this.mEngine.setSurfaceSize(CAMERA_WIDTH, CAMERA_HEIGHT);
 
-			this.mEngine.getScene().detachChildren();
+			// this.runOnUpdateThread(new Runnable() {
+			// @Override
+			// public void run() {
+			// scene.detachChildren();
+			// }
+			// });
+
+			// this.mEngine.getScene().detachChildren();
 
 			this.onLoadEngine();
 
