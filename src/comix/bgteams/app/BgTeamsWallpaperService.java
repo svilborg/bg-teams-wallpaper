@@ -38,7 +38,7 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 	public static final String SHARED_PREFS_NAME = "livewallpapertemplatesettings";
 
-	private static boolean DEBUG = true;
+	private static boolean DEBUG = false;
 
 	// Camera Constants
 	private static int CAMERA_WIDTH = 480;

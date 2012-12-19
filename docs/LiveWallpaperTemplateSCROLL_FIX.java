@@ -183,8 +183,7 @@ public class LiveWallpaperTemplate
 	}
 
 	// fix from : by Kangee » Mon Aug 30, 2010 10:39 pm
-	// http://www.andengine.org/forums/live-wallpaper
-	// -extension/how-wallpaper-scroll-along-with-homescreen-t444.html
+	// http://www.andengine.org/forums/live-wallpaper-extension/how-wallpaper-scroll-along-with-homescreen-t444.html
 
 	/*
 	 * the BaseWallpaperGLEngine class in the BaseLiveWallpaperService. To
