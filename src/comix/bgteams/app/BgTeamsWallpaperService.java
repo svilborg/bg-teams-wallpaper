@@ -67,6 +67,8 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	private Camera mCamera;
 	private ScreenOrientation mScreenOrientation;
 
+	private boolean settingsChanged;
+
 	// ===========================================================
 	// Constructors
 	// ===========================================================
@@ -140,6 +142,8 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 		prefTeam = pSharedPrefs.getString("teams_options", "Beroe.png");
 		prefType = Integer.valueOf(sharedPreferences.getString("types_options", "1"));
 		prefBgColor = pSharedPrefs.getInt("bgcolor_options", 0);
+
+		settingsChanged = true;
 
 		if (DEBUG) {
 			Log.d("WALLY", " ---- CHANGED onSharedPreferenceChanged :: " + prefTeam + " " + String.valueOf(prefType) + " " + prefBgColor);
@@ -301,9 +305,9 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 	public Scene onLoadScene() {
 		if (DEBUG) {
 			Log.d("WALLY", " ---- ON LOAD SCENE ---------");
-		}
 
-		this.mEngine.registerUpdateHandler(new FPSLogger());
+			this.mEngine.registerUpdateHandler(new FPSLogger());
+		}
 
 		this.scene = new Scene();
 
@@ -397,38 +401,43 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 			Log.d("WALLY", " ---- ON RESUME---------");
 		}
 
-		// if (settingsChanged) {
-		Log.d("WALLY", " ---- SETTINGS CHANGED ---------");
-
-		if (this.mEngine.getScene() != null) {
+		if (settingsChanged) {
 			if (DEBUG) {
-				Log.d("WALLY", " ---- DETATCH !!!!! ---------");
+				Log.d("WALLY", " ---- SETTINGS CHANGED ---------");
 			}
 
-			// this.mEngine.setSurfaceSize(CAMERA_WIDTH, CAMERA_HEIGHT);
+			if (this.mEngine.getScene() != null) {
+				if (DEBUG) {
+					Log.d("WALLY", " ---- DETATCH !!!!! ---------");
+				}
 
-			// this.runOnUpdateThread(new Runnable() {
-			// @Override
-			// public void run() {
-			// scene.detachChildren();
-			// }
-			// });
+				// this.mEngine.setSurfaceSize(CAMERA_WIDTH, CAMERA_HEIGHT);
 
-			// this.mEngine.getScene().detachChildren();
+				// this.runOnUpdateThread(new Runnable() {
+				// @Override
+				// public void run() {
+				// scene.detachChildren();
+				// }
+				// });
 
-			this.onLoadEngine();
+				// this.mEngine.getScene().detachChildren();
 
-			// this.onLoadResources();
-			this.onLoadScene();
+				this.onLoadEngine();
 
-			this.mEngine.onLoadComplete(scene);
+				// this.onLoadResources();
+				this.onLoadScene();
+
+				this.mEngine.onLoadComplete(scene);
+			}
+
+			// this.mEngine.getTextureManager().loadTexture(this.mTexture);
+			// unload !!!
+		} else {
+			if (DEBUG) {
+				Log.d("WALLY", " ---- SETTINGS NOT CHANGED ---------");
+			}
+
+			settingsChanged = false;
 		}
-
-		// this.mEngine.getTextureManager().loadTexture(this.mTexture);
-		// unload !!!
-		// }
-		// else {
-		// Log.d("WALLY", " ---- SETTINGS NOT CHANGED ---------");
-		// }
 	}
 }
