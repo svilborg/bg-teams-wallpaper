@@ -6,6 +6,7 @@ import android.preference.PreferenceActivity;
 
 public class BgTeamsWallpaperSettings extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
@@ -19,6 +20,7 @@ public class BgTeamsWallpaperSettings extends PreferenceActivity implements Shar
 		super.onResume();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onDestroy() {
 		getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
