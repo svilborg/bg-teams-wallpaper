@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Equipes bulgares</string>
+    <string name="menu_settings">Paramètres</string>
+    <string name="wallpaper_description">Fond d`écran animés des équipes bulgares</string>
+
+    <!-- Settings -->
+    <string name="wallpaper_settings">Paramètres</string>
+
+    <string name="teams">Equipes</string>
+    <string name="teams_desc">Choisissez le logo de l`équipe</string>
+
+    <string name="category_types">Paramètres du fond d`écran</string>
+    <string name="types_desc">Type de l`animation</string>
+    <string name="types">Types</string>
+    <string name="animation">Animation</string>
+
+    <string name="bgcolor">Couleur du fond</string>
+    <string name="bgcolor_desc">Choisissez une couleur</string>
+
+    <string name="set_wallpaper">Selectionnez le fond d`écran</string>
+    <string name="settings">Paramètres</string>
+
+    <string name="how_to_enable"><![CDATA[
+		<p><b>L`application "Equipes bulgares" vous donne la possibilité de choisir le logo de l`équipe préféré come un fond d`écran animé</b></p>
+
+		<p>Cliquez sur Selectionnez le fond d`écran, puis sur "Equipes Bulgares" et utilisez "Paramètres..." pour configurer votre fond d`écran animé.</p>
+		]]> </string>
+
+</resources>
