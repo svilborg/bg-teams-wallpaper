@@ -2,7 +2,6 @@
 <resources>
 
     <string name="app_name">Equipos Búlgaros</string>
-    <string name="menu_settings">Ajustes</string>
     <string name="wallpaper_description">Fondo de pantalla de los Equipos Búlgaros</string>
 
     <!-- Settings -->
@@ -20,7 +19,6 @@
     <string name="bgcolor_desc">Recoger un color</string>
 
     <string name="set_wallpaper">Esablecer fondo de pantalla</string>
-    <string name="settings">Ajustes</string>
 
     <string name="how_to_enable"><![CDATA[
 		<p><b>El Fondo de pantalla de los Equipos Búlgaros le ofrece la posibilidad de configurar su favorito equipo de fútbol búlgaro como fondo de pantalla.</b></p>

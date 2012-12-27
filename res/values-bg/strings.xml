@@ -2,7 +2,6 @@
 <resources>
 
     <string name="app_name">Български Отбори</string>
-    <string name="menu_settings">Настройки</string>
     <string name="wallpaper_description">Тапет на Българските отбори</string>
 
     <!-- Settings -->
@@ -19,8 +18,7 @@
     <string name="bgcolor">Цвят на фона</string>
     <string name="bgcolor_desc">Избор на цвят на фона</string>
     
-    <string name="set_wallpaper">Добавяне на тапет</string>
-    <string name="settings">Настройки</string>    
+    <string name="set_wallpaper">Добавяне на тапет</string> 
     
     <string name="how_to_enable"><![CDATA[
 		<p><b>Приложението ви дава възможност да използвате емблемата на предпочитания от вас отбор като динамичен тапет.</b></p>

@@ -23,7 +23,7 @@
             android:title="@string/animation" />
 
         <yuku.ambilwarna.widget.AmbilWarnaPreference
-            android:defaultValue="0xff6699cc"
+            android:defaultValue="0xff000000"
             android:key="bgcolor_options"
             android:summary="@string/bgcolor_desc"
             android:title="@string/bgcolor" />
