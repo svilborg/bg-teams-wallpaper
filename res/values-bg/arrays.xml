@@ -7,6 +7,7 @@
         <item>Ротация 2D</item>
         <item>Ротация 3D</item>
         <item>Пулсиране</item>
+        <item>Еластичен</item>
     </string-array>
     
     <string-array name="types_values">
@@ -15,6 +16,7 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
     </string-array>
     
    <string-array name="teams_options">

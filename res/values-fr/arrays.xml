@@ -7,16 +7,18 @@
         <item>Rotation 2D</item>
         <item>Rotation 3D</item>
         <item>Palpitant</item>
+        <item>Élastique</item>
     </string-array>
-    
+
     <string-array name="types_values">
         <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
     </string-array>
-    
+
     <string-array name="teams_options">
         <item>Bdin Vidin</item>
         <item>Beroe Stara Zagora</item>
@@ -51,7 +53,7 @@
         <item>Vidima Rakovski</item>
         <item>Yantra Gabrovo</item>
     </string-array>
-    
+
     <string-array name="teams_values">
         <item>Bdin_Vidin.png</item>
         <item>Beroe.png</item>

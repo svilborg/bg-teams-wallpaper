@@ -7,6 +7,8 @@ import org.anddev.andengine.engine.handler.physics.PhysicsHandler;
 import org.anddev.andengine.engine.options.EngineOptions;
 import org.anddev.andengine.engine.options.EngineOptions.ScreenOrientation;
 import org.anddev.andengine.engine.options.resolutionpolicy.FillResolutionPolicy;
+import org.anddev.andengine.entity.modifier.DelayModifier;
+import org.anddev.andengine.entity.modifier.IEntityModifier;
 import org.anddev.andengine.entity.modifier.LoopEntityModifier;
 import org.anddev.andengine.entity.modifier.ParallelEntityModifier;
 import org.anddev.andengine.entity.modifier.RotationModifier;
@@ -105,9 +107,6 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 		mCamera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
 		mCamera.setZClippingPlanes(-100, 100);
 
-		// return new org.anddev.andengine.engine.Engine(new EngineOptions(true,
-		// ScreenOrientation.PORTRAIT, new RatioResolutionPolicy(CAMERA_WIDTH,
-		// CAMERA_HEIGHT), mCamera));
 		return new org.anddev.andengine.engine.Engine(new EngineOptions(true, this.mScreenOrientation, new FillResolutionPolicy(), mCamera));
 	}
 
@@ -212,17 +211,27 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 		this.mEngine.getTextureManager().loadTexture(this.mTexture);
 	}
 
-	// @Override
 	public Sprite loadSpriteRotation2D() {
 		final Sprite sprite = loadSpriteStatic();
 
-		final LoopEntityModifier entityModifier = new LoopEntityModifier(new ParallelEntityModifier(new RotationModifier(6, 0, 360)));
+		final IEntityModifier entityModifier = new LoopEntityModifier(new ParallelEntityModifier(new RotationModifier(6, 0, 360)));
 
 		sprite.registerEntityModifier(entityModifier);
 
 		return sprite;
 	}
 
+	public Sprite loadSpriteElastic() {
+		final Sprite sprite = loadSpriteStatic();
+
+		final IEntityModifier entityModifier = new SequenceEntityModifier(new ScaleModifier(2.5f, 1, 0.5f), new DelayModifier(0.5f), new ParallelEntityModifier(new ScaleModifier(1.2f, 0.5f, 4)), new ParallelEntityModifier(new ScaleModifier(1.2f, 4, 1)));
+
+		sprite.registerEntityModifier(new LoopEntityModifier(entityModifier));
+
+		// sprite.registerEntityModifier(entityModifier);
+
+		return sprite;
+	}
 	// @Override
 	public Sprite loadSpritePulsate() {
 
@@ -235,12 +244,9 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 		return sprite;
 	}
 
-	// @Override
+// @Override
 	public Sprite loadSpriteRotation3D() {
-		/*
-		 * Calculate the coordinates for the sprite, so its centered on the
-		 * camera.
-		 */
+
 		final int x = (CAMERA_WIDTH - this.mTextureRegion.getWidth()) / 2;
 		final int y = (CAMERA_HEIGHT - this.mTextureRegion.getHeight()) / 2;
 
@@ -318,8 +324,6 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 		scene.setBackground(c);
 
-		// scene.clearChildScene();
-
 		if (prefType == 2) {
 			scene.attachChild(loadSpriteMoving());
 		} else if (prefType == 3) {
@@ -328,6 +332,8 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 			scene.attachChild(loadSpriteRotation3D());
 		} else if (prefType == 5) {
 			scene.attachChild(loadSpritePulsate());
+		} else if (prefType == 6) {
+			scene.attachChild(loadSpriteElastic());
 		} else {
 			scene.attachChild(loadSpriteStatic());
 		}
