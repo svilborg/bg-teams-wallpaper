@@ -228,11 +228,9 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 
 		sprite.registerEntityModifier(new LoopEntityModifier(entityModifier));
 
-		// sprite.registerEntityModifier(entityModifier);
-
 		return sprite;
 	}
-	// @Override
+
 	public Sprite loadSpritePulsate() {
 
 		final Sprite sprite = loadSpriteStatic();
@@ -244,7 +242,6 @@ public class BgTeamsWallpaperService extends BaseLiveWallpaperService implements
 		return sprite;
 	}
 
-// @Override
 	public Sprite loadSpriteRotation3D() {
 
 		final int x = (CAMERA_WIDTH - this.mTextureRegion.getWidth()) / 2;
