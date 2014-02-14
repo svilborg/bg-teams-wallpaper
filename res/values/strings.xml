@@ -12,7 +12,7 @@
 
     <string name="category_types">Wallpaper Settings</string>
     <string name="types_desc">Type of Logo Movement</string>
-    <string name="types">Types</string>
+    <string name="types">Types</string>  
     <string name="animation">Animation</string>
 
     <string name="bgcolor">Background Color</string>
